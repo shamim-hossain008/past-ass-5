@@ -44,7 +44,7 @@ btn.addEventListener("click", function (){
     // get the value from input
     const couponElement = document.getElementById("input-field").value;
     // console.log(couponElement);
-    const couponCod = couponElement.split(" ").join(" ").toUpperCase();
+    const couponCod = couponElement.split(" ").join("").toUpperCase();
     console.log(couponCod);
 
     if ( totalPrice>= 200){
@@ -52,13 +52,19 @@ btn.addEventListener("click", function (){
             const discountElement = document.getElementById("discountPrice");
             const discountAmount = totalPrice * 0.2;
             discountElement.innerText = discountAmount.toFixed(2);
+            // rest total calculation
+            const restTotal = document.getElementById("total");
+            restTotal.innerText = totalPrice - discountAmount.toFixed(2);
+            document.getElementById("input-field").value = "";
 
         }else{
             alert("Invalid Coupon");
+            document.getElementById("input-field").value = "";
         }
 
     }else{
         alert("Please Buy $200 or $ 200 over!");
+        document.getElementById("input-field").value = "";
     }
 })
 
